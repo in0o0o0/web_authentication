@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <script type="text/javascript" src="zxcvbn.js"></script>
+    <script type="text/javascript" src="jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="jquery.raty.js"></script>
+  </head>
+  <body>
+    <input type="text" id="password" onkeyup="changeScore()">
+    <div id="star" style="pointer-events: none;"></div>
+
+    <script type="text/javascript">
+    $('#star').raty();
+
+    function changeScore() {
+        var $password = document.getElementById("password").value;
+
+        if($password == ""){
+          $('#star').raty({
+            score:0
+          });
+        }else{
+          $('#star').raty({
+            score:parseInt(zxcvbn($password).score)+1
+          }
+        );
+      }
+    }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <body>
+    <form action="/" method="post">
+      <p>ID：<input type="text" name="id" size="20"></p>
+      <p>PW：<input type="password" name="pw" size="20"></p>
+      <div class="g-recaptcha" data-callback="activate"  data-expired-callback="deactivate" data-sitekey="YOUR_SITEKEY" ></div>
+      <input type="submit" id="submit"  disabled="disabled">
+    </form>
+  </body>
+
+  <script>
+
+  function activate(code){
+    $('#submit').attr('disabled',false);
+  }
+
+  function deactivate(code){
+    $('#submit').attr('disabled',true);
+  }
+  </script>
+
+  <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+    </script>
+
+</html>
